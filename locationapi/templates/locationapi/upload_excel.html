@@ -4,13 +4,15 @@
 <p>
   Rules to follow:
   <br /><br />
-  1. Please upload a excel file with .xlsx extension.
+  1. Please upload a excel file with <strong>.csv extension</strong> only.
   <br />
-  2. Please add address of your choice in the first column only.
+  2. Please add column headers as address, latitude & longitude.
   <br />
-  3. All other columns should be blank for this web application to work.
+  3. Please add any number of addresses of your choice in the first column only.
   <br />
-  4. Click Upload the file, a output file will be generated in 10-120 seconds depending on the file size.
+  4. All other columns should be blank for this web application to work.
+  <br />
+  5. Click Upload the file, a output file will be generated in 10-120 seconds depending on the file size.
 </p>
 <br />
 <form action='{% url "upload_excel" %}' method="post" enctype="multipart/form-data">

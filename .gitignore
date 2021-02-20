@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 settings.json
+*.csv
+*.ipynb
+config.json
