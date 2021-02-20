@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Upload Excel File</h2>
+<h2>GeoLocation API (File Upload)</h2>
+<p>
+  This application is for getting the co-ordinates of a location by uploading a excel file with any particular address. 
+  The co-ordinates are fetched using MapQuest's REST API.
+</p>
 <p>
   Rules to follow:
   <br /><br />
   1. Please upload a excel file with <strong>.csv extension</strong> only.
   <br />
-  2. Please add column headers as address, latitude & longitude.
+  2. Please add column headers as address, latitude & longitude. (**Case-sensitive)
   <br />
   3. Please add any number of addresses of your choice in the first column only.
   <br />
