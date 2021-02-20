@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Upload Excel File</h2>
+<p>
+  Rules to follow:
+  <br /><br />
+  1. Please upload a excel file with .xlsx extension.
+  <br />
+  2. Please add address of your choice in the first column only.
+  <br />
+  3. All other columns should be blank for this web application to work.
+  <br />
+  4. Click Upload the file, a output file will be generated in 10-120 seconds depending on the file size.
+</p>
+<br />
+<form action='{% url "upload_excel" %}' method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file"
+          title="Upload excel file"
+          name="excel_file"
+          style="border: 1px solid black; padding: 5px;"
+          required="required">
+  <input type="submit"
+          value="Upload"
+          style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
+</form>
+{% endblock %}
