@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np 
 import requests 
 import json, os 
+import csv
 
 # Read Config File
 with open(os.path.join(settings.BASE_DIR, 'config.json')) as secrets_file:
@@ -21,6 +22,7 @@ def upload_excel(request):
     if request.method == 'GET':
         return render(request, 'locationapi/upload_excel.html')
     else:
+        # File recieved and processed using pandas dataframe
         excel_file = request.FILES["excel_file"]
         excel_data = pd.read_csv(excel_file)
         for val in excel_data['address']:
@@ -31,7 +33,14 @@ def upload_excel(request):
             lat = json_output['results'][0]['locations'][0]['latLng']['lat']
             lng = json_output['results'][0]['locations'][0]['latLng']['lng'] 
             excel_data.loc[excel_data.address == loc, ['latitude', 'longitude']] = lat, lng
-          
-        print(excel_data)
+
+        # Reponse file sent to user
+        response = HttpResponse(content_type='application/vnd.ms-excel')
+        response['Content-Disposition'] = 'attachment; filename=output.csv'
+        writer = csv.writer(response)
+        writer.writerow(['no' ,'address', 'latitude', 'longitude'])
+
+        for row in excel_data.itertuples():
+            writer.writerow(list(row))
         
-        return render(request, 'locationapi/upload_excel.html')
+        return response
