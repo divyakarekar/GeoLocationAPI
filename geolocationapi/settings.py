@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # First Party Apps
     'locationapi',
-    # Third Party Apps
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
