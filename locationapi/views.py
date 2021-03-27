@@ -8,7 +8,7 @@ import requests
 import json, os 
 import csv
 
-# Read Config File
+# Read Config File from json
 with open(os.path.join(settings.BASE_DIR, 'config.json')) as secrets_file:
     config = json.load(secrets_file)
 
